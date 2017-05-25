@@ -1,0 +1,6 @@
+[package]
+name = "foodchainmagnate"
+version = "0.1.0"
+authors = ["Nathan Smyth <nathan.andrew.smyth@gmail.com>"]
+
+[dependencies]
