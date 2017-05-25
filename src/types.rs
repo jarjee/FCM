@@ -1,4 +1,4 @@
-struct Demand {
+pub struct Demand {
     Burgers: u8,
     Pizzas: u8,
     Beers: u8,
@@ -43,8 +43,8 @@ impl Demand {
 }
 
 pub struct House {
-    Id: u8,
-    Demand: Demand,
+    pub Id: u8,
+    pub Demand: Demand,
 }
 
 impl House {

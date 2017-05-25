@@ -4,6 +4,7 @@ mod types;
 mod tests {
     #[test]
     fn it_works() {
-        let t = types::House::new();
+        let t = ::types::House::new(1);
+        t.Demand::hasDemand();
     }
 }
