@@ -1,57 +1,57 @@
 pub struct Demand {
-    Burgers: u8,
-    Pizzas: u8,
-    Beers: u8,
-    Sodas: u8,
-    Lemonade: u8,
+    burgers: u8,
+    pizzas: u8,
+    beers: u8,
+    sodas: u8,
+    lemonade: u8,
 }
 
 impl Demand {
     pub fn hasDemand(&self) -> bool {
-        return (self.Burgers + self.Pizzas + self.Beers + self.Sodas + self.Lemonade) == 0;
+        return (self.burgers + self.pizzas + self.beers + self.sodas + self.lemonade) == 0;
     }
 
     pub fn burgers(&self) -> u8 {
-        return self.Burgers;
+        return self.burgers;
     }
 
     pub fn pizzas(&self) -> u8 {
-        return self.Pizzas;
+        return self.pizzas;
     }
 
     pub fn beers(&self) -> u8 {
-        return self.Beers;
+        return self.beers;
     }
 
     pub fn sodas(&self) -> u8 {
-        return self.Sodas;
+        return self.sodas;
     }
 
     pub fn lemonade(&self) -> u8 {
-        return self.Lemonade;
+        return self.lemonade;
     }
 
     fn new() -> Demand {
         Demand {
-            Burgers: 0,
-            Pizzas: 0,
-            Beers: 0,
-            Sodas: 0,
-            Lemonade: 0,
+            burgers: 0,
+            pizzas: 0,
+            beers: 0,
+            sodas: 0,
+            lemonade: 0,
         }
     }
 }
 
 pub struct House {
-    pub Id: u8,
-    pub Demand: Demand,
+    pub id: u8,
+    pub demand: Demand,
 }
 
 impl House {
     pub fn new(id: u8) -> House {
         House {
-            Id: id,
-            Demand: Demand::new(),
+            id: id,
+            demand: Demand::new(),
         }
     }
 }
@@ -64,7 +64,7 @@ enum AdvertType {
 }
 
 struct Advert {
-    Id: u8,
-    Demand: Demand,
-    Type: AdvertType,
+    id: u8,
+    demand: Demand,
+    category: AdvertType,
 }
