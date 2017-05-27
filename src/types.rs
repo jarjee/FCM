@@ -11,6 +11,7 @@ impl Demand {
         return (self.burgers() + self.pizzas() + self.beers() + self.sodas() + self.lemonade()) > 0;
     }
 
+    #[cfg(test)]
     pub fn demandArray(&self) -> [u8; 5] {
         return [self.burgers(),
                 self.pizzas(),
@@ -19,6 +20,7 @@ impl Demand {
                 self.lemonade()];
     }
 
+    #[cfg(test)]
     pub fn setDemandArray(&mut self, demandArr: [u8; 5]) {
         self.burgers = demandArr[0];
         self.pizzas = demandArr[1];
