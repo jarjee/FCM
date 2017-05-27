@@ -8,7 +8,7 @@ pub struct Demand {
 
 impl Demand {
     pub fn hasDemand(&self) -> bool {
-        return (self.burgers + self.pizzas + self.beers + self.sodas + self.lemonade) > 0;
+        return (self.burgers() + self.pizzas() + self.beers() + self.sodas() + self.lemonade()) > 0;
     }
 
     pub fn demandArray(&self) -> [u8; 5] {
