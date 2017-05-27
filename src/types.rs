@@ -11,6 +11,10 @@ impl Demand {
         return (self.burgers + self.pizzas + self.beers + self.sodas + self.lemonade) > 0;
     }
 
+    pub fn setBurgers(&mut self, burgs: u8) {
+        self.burgers = burgs;
+    }
+
     pub fn burgers(&self) -> u8 {
         return self.burgers;
     }
@@ -31,7 +35,7 @@ impl Demand {
         return self.lemonade;
     }
 
-    fn new() -> Demand {
+    pub fn new() -> Demand {
         Demand {
             burgers: 0,
             pizzas: 0,
