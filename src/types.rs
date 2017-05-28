@@ -1,4 +1,5 @@
 pub struct Demand {
+    demand: u16,
     burgers: u8,
     pizzas: u8,
     beers: u8,
@@ -13,20 +14,32 @@ impl Demand {
 
     #[cfg(test)]
     pub fn demandArray(&self) -> [u8; 5] {
-        return [self.burgers(),
-                self.pizzas(),
-                self.beers(),
-                self.sodas(),
-                self.lemonade()];
+        let mut demandStore = self.demand;
+
+        let burgers = (demandStore % 7) as u8;
+        demandStore /= 7;
+        let pizzas = (demandStore % 7) as u8;
+        demandStore /= 7;
+        let beers = (demandStore % 7) as u8;
+        demandStore /= 7;
+        let sodas = (demandStore % 7) as u8;
+        demandStore /= 7;
+        let lemonade = demandStore as u8;
+
+        return [burgers, pizzas, beers, sodas, lemonade];
     }
 
     #[cfg(test)]
     pub fn setDemandArray(&mut self, demandArr: [u8; 5]) {
-        self.burgers = demandArr[0];
-        self.pizzas = demandArr[1];
-        self.beers = demandArr[2];
-        self.sodas = demandArr[3];
-        self.lemonade = demandArr[4];
+        self.demand = demandArr[4] as u16;
+        self.demand *= 7;
+        self.demand += demandArr[3] as u16;
+        self.demand *= 7;
+        self.demand += demandArr[2] as u16;
+        self.demand *= 7;
+        self.demand += demandArr[1] as u16;
+        self.demand *= 7;
+        self.demand += demandArr[0] as u16;
     }
 
     pub fn setBurgers(&mut self, amount: u8) {
@@ -71,6 +84,7 @@ impl Demand {
 
     pub fn new() -> Demand {
         Demand {
+            demand: 0,
             burgers: 0,
             pizzas: 0,
             beers: 0,
