@@ -1,10 +1,5 @@
 pub struct Demand {
     demand: u16,
-    burgers: u8,
-    pizzas: u8,
-    beers: u8,
-    sodas: u8,
-    lemonade: u8,
 }
 
 impl Demand {
@@ -14,83 +9,64 @@ impl Demand {
 
     #[cfg(test)]
     pub fn demandArray(&self) -> [u8; 5] {
-        let mut demandStore = self.demand;
-
-        let burgers = (demandStore % 7) as u8;
-        demandStore /= 7;
-        let pizzas = (demandStore % 7) as u8;
-        demandStore /= 7;
-        let beers = (demandStore % 7) as u8;
-        demandStore /= 7;
-        let sodas = (demandStore % 7) as u8;
-        demandStore /= 7;
-        let lemonade = demandStore as u8;
-
-        return [burgers, pizzas, beers, sodas, lemonade];
+        return [self.burgers(),
+                self.pizzas(),
+                self.beers(),
+                self.sodas(),
+                self.lemonade()];
     }
 
     #[cfg(test)]
     pub fn setDemandArray(&mut self, demandArr: [u8; 5]) {
-        self.demand = demandArr[4] as u16;
-        self.demand *= 7;
-        self.demand += demandArr[3] as u16;
-        self.demand *= 7;
-        self.demand += demandArr[2] as u16;
-        self.demand *= 7;
-        self.demand += demandArr[1] as u16;
-        self.demand *= 7;
-        self.demand += demandArr[0] as u16;
+        self.setBurgers(demandArr[0]);
+        self.setPizzas(demandArr[1]);
+        self.setBeers(demandArr[2]);
+        self.setSodas(demandArr[3]);
+        self.setLemonade(demandArr[4]);
     }
 
     pub fn setBurgers(&mut self, amount: u8) {
-        self.burgers = amount;
+        self.demand = (self.demand - self.burgers() as u16) + amount as u16;
     }
 
     pub fn burgers(&self) -> u8 {
-        return self.burgers;
+        return (self.demand % 7) as u8;
     }
 
     pub fn setPizzas(&mut self, amount: u8) {
-        self.pizzas = amount;
+        self.demand = (self.demand - self.pizzas() as u16 * 7) + amount as u16 * 7;
     }
 
     pub fn pizzas(&self) -> u8 {
-        return self.pizzas;
+        return (((self.demand) / 7) % 7) as u8;
     }
 
     pub fn setBeers(&mut self, amount: u8) {
-        self.beers = amount;
+        self.demand = (self.demand - self.beers() as u16 * 49) + amount as u16 * 49;
     }
 
     pub fn beers(&self) -> u8 {
-        return self.beers;
+        return (((self.demand) / 49) % 7) as u8;
     }
 
     pub fn setSodas(&mut self, amount: u8) {
-        self.sodas = amount;
+        self.demand = (self.demand - self.sodas() as u16 * 343) + amount as u16 * 343;
     }
 
     pub fn sodas(&self) -> u8 {
-        return self.sodas;
+        return (((self.demand) / 343) % 7) as u8;
     }
 
     pub fn setLemonade(&mut self, amount: u8) {
-        self.lemonade = amount;
+        self.demand = (self.demand - self.lemonade() as u16 * 2401) + amount as u16 * 2401;
     }
 
     pub fn lemonade(&self) -> u8 {
-        return self.lemonade;
+        return (((self.demand) / 2401) % 7) as u8;
     }
 
     pub fn new() -> Demand {
-        Demand {
-            demand: 0,
-            burgers: 0,
-            pizzas: 0,
-            beers: 0,
-            sodas: 0,
-            lemonade: 0,
-        }
+        Demand { demand: 0 }
     }
 }
 

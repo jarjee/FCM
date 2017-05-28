@@ -17,8 +17,11 @@ mod tests {
     quickcheck!{
         fn demand_should_allow_for_getting_a_set_burger(burgs: u8) -> bool {
             let mut demand = ::types::Demand::new();
-            demand.setBurgers(burgs);
-            demand.burgers() == burgs
+
+            let safeBurger = burgs % 7;
+
+            demand.setBurgers(safeBurger);
+            demand.burgers() == safeBurger
         }
     }
 
