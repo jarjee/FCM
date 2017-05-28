@@ -3,12 +3,12 @@ pub struct Demand {
 }
 
 impl Demand {
-    pub fn hasDemand(&self) -> bool {
+    pub fn has_demand(&self) -> bool {
         return (self.burgers() + self.pizzas() + self.beers() + self.sodas() + self.lemonade()) > 0;
     }
 
     #[cfg(test)]
-    pub fn demandArray(&self) -> [u8; 5] {
+    pub fn demand_array(&self) -> [u8; 5] {
         return [self.burgers(),
                 self.pizzas(),
                 self.beers(),
@@ -17,15 +17,15 @@ impl Demand {
     }
 
     #[cfg(test)]
-    pub fn setDemandArray(&mut self, demandArr: [u8; 5]) {
-        self.setBurgers(demandArr[0]);
-        self.setPizzas(demandArr[1]);
-        self.setBeers(demandArr[2]);
-        self.setSodas(demandArr[3]);
-        self.setLemonade(demandArr[4]);
+    pub fn set_demand_array(&mut self, demandArr: [u8; 5]) {
+        self.set_burgers(demandArr[0]);
+        self.set_pizzas(demandArr[1]);
+        self.set_beers(demandArr[2]);
+        self.set_sodas(demandArr[3]);
+        self.set_lemonade(demandArr[4]);
     }
 
-    pub fn setBurgers(&mut self, amount: u8) {
+    pub fn set_burgers(&mut self, amount: u8) {
         self.demand = (self.demand - self.burgers() as u16) + amount as u16;
     }
 
@@ -33,7 +33,7 @@ impl Demand {
         return (self.demand % 7) as u8;
     }
 
-    pub fn setPizzas(&mut self, amount: u8) {
+    pub fn set_pizzas(&mut self, amount: u8) {
         self.demand = (self.demand - self.pizzas() as u16 * 7) + amount as u16 * 7;
     }
 
@@ -41,7 +41,7 @@ impl Demand {
         return (((self.demand) / 7) % 7) as u8;
     }
 
-    pub fn setBeers(&mut self, amount: u8) {
+    pub fn set_beers(&mut self, amount: u8) {
         self.demand = (self.demand - self.beers() as u16 * 49) + amount as u16 * 49;
     }
 
@@ -49,7 +49,7 @@ impl Demand {
         return (((self.demand) / 49) % 7) as u8;
     }
 
-    pub fn setSodas(&mut self, amount: u8) {
+    pub fn set_sodas(&mut self, amount: u8) {
         self.demand = (self.demand - self.sodas() as u16 * 343) + amount as u16 * 343;
     }
 
@@ -57,7 +57,7 @@ impl Demand {
         return (((self.demand) / 343) % 7) as u8;
     }
 
-    pub fn setLemonade(&mut self, amount: u8) {
+    pub fn set_lemonade(&mut self, amount: u8) {
         self.demand = (self.demand - self.lemonade() as u16 * 2401) + amount as u16 * 2401;
     }
 

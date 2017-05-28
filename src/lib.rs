@@ -10,7 +10,7 @@ mod tests {
     #[test]
     fn a_new_house_has_no_demand() {
         let t = ::types::House::new(1);
-        assert!(!t.demand.hasDemand());
+        assert!(!t.demand.has_demand());
     }
 
     #[test]
@@ -20,7 +20,7 @@ mod tests {
 
             let safeBurger = burgs % 7;
 
-            demand.setBurgers(safeBurger);
+            demand.set_burgers(safeBurger);
             demand.burgers() == safeBurger
         }
     }
@@ -67,8 +67,8 @@ mod tests {
 
             let mut demand = ::types::Demand::new();
 
-            demand.setDemandArray(demandArr);
-            let storedDemand = demand.demandArray();
+            demand.set_demand_array(demandArr);
+            let storedDemand = demand.demand_array();
 
             return demandArr == storedDemand;
         }
